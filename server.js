@@ -6,7 +6,8 @@
 
 const TOKEN = process.env.TELEGRAM_TOKEN || '344440465:AAHijYUPv5iEV12ax7ODQFrh7mAkL88s-fk';
 
-const TelegramBot = require('node-telegram-bot-api');
+//const TelegramBot = require('node-telegram-bot-api');
+const TelegramBot = require('..');
 // See https://developers.openshift.com/en/node-js-environment-variables.html
 const options = {
   webHook: {
