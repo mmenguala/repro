@@ -1,34 +1,38 @@
-/**
- * This example demonstrates setting up webhook
- * on the OpenShift platform.
- */
+//var sys = require ('sys'),
+var url = require('url'),
+http = require('http'),
+qs = require('querystring');
 
 
-const TOKEN = process.env.TELEGRAM_TOKEN || '344440465:AAHijYUPv5iEV12ax7ODQFrh7mAkL88s-fk';
+function checkArray(json)
+{
+    for(var i = 0; i < json.length; i++) {
+        var obj = json[i];
 
-//const TelegramBot = require('node-telegram-bot-api');
-const TelegramBot = require('..');
-// See https://developers.openshift.com/en/node-js-environment-variables.html
-const options = {
-  webHook: {
-    port: process.env.OPENSHIFT_NODEJS_PORT,
-    host: process.env.OPENSHIFT_NODEJS_IP,
-    // you do NOT need to set up certificates since OpenShift provides
-    // the SSL certs already (https://<app-name>.rhcloud.com)
-  },
-};
-// OpenShift routes from port :443 to OPENSHIFT_NODEJS_PORT
-const domain = process.env.OPENSHIFT_APP_DNS;
-const url = `${domain}:443`;
-const bot = new TelegramBot(TOKEN, options);
+        console.log(obj);
+    }
+}
 
 
-// This informs the Telegram servers of the new webhook.
-// Note: we do not need to pass in the cert, as it already provided
-bot.setWebHook(`${url}/bot${TOKEN}`);
-
-
-// Just to ping!
-bot.on('message', function onMessage(msg) {
-  bot.sendMessage(msg.chat.id, 'I am alive on OpenShift!');
-});
+http.createServer(function (req, res)
+{
+    if(req.method=='POST')
+    {
+            var body='';
+            req.on('data', function (data)
+            {
+                body +=data;
+            });
+            req.on('end',function()
+            {
+                var POST =  JSON.parse(body);
+                console.log(POST);
+                //checkArray(POST.employees);
+                res.end();
+            });
+    }
+    else if(req.method=='GET') {
+        var url_parts = url.parse(req.url,true);
+        console.log(url_parts.query);
+    }
+}).listen(8080, "127.0.0.1");
