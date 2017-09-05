@@ -1,4 +1,3 @@
-#!/bin/env node
 /*
 //var sys = require ('sys'),
 var url = require('url'),
