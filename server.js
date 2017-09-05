@@ -47,8 +47,8 @@ http.createServer(function (req, res)
 const express = require('express')  
 const app = express()
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8081
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+var server_port = process.env.NODE_PORT || 8081
+var server_ip_address = process.env.NODE_SERVICE_HOST || '127.0.0.1'
 
 app.use((request, response, next) => {  
   console.log(request.headers)
@@ -71,5 +71,5 @@ app.listen(server_port, server_ip_address, function () {
 });
 
 for (var prop in process.env){
-	console.log(prop + ": " + process[prop])
+	console.log(prop + ": " + process.env[prop])
 }
