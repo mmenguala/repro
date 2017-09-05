@@ -27,7 +27,6 @@ http.createServer(function (req, res)
             {
                 var POST =  JSON.parse(body);
                 console.log(POST);
-                //checkArray(POST.employees);
                 res.end();
             });
     }
