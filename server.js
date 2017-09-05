@@ -1,3 +1,4 @@
+#!/bin/env node
 /*
 //var sys = require ('sys'),
 var url = require('url'),
@@ -42,6 +43,7 @@ http.createServer(function (req, res)
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
 */
+
 const express = require('express')  
 const app = express()
 
