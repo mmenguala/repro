@@ -28,7 +28,7 @@ app.listen(8080, '0.0.0.0', function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
 
-/*
+/*//
 for (var prop in process.env){
 	console.log(prop + ": " + process.env[prop])
 }
