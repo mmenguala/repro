@@ -5,7 +5,7 @@ var server_port = process.env.NODE_PORT || 8081
 var server_ip_address = process.env.NODE_PORT_8080_TCP_ADDR || '127.0.0.1'
 
 console.log("El puerto es : " + server_port);
-console.log("La IP es " + server_ip_address);
+console.log("La IP es :" + server_ip_address);
 
 app.use((request, response, next) => {  
   console.log(request.headers)
@@ -23,11 +23,10 @@ app.get('/', (request, response) => {
   })
 })
 
-app.listen(server_port, server_ip_address, function () {
+app.listen(8080, server_ip_address, function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
-/*
+
 for (var prop in process.env){
 	console.log(prop + ": " + process.env[prop])
 }
-*/
