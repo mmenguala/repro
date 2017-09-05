@@ -34,9 +34,4 @@ http.createServer(function (req, res)
         var url_parts = url.parse(req.url,true);
         console.log(url_parts.query);
     }
-}).listen(80, function (evt)
-		{
-			console.log("conectado");
-		}
-				
-);
+}).listen(8080);
