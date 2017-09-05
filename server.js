@@ -1,3 +1,4 @@
+/*
 //var sys = require ('sys'),
 var url = require('url'),
 http = require('http'),
@@ -40,3 +41,24 @@ http.createServer(function (req, res)
 }).listen(server_port, server_ip_address, function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
+*/
+const express = require('express')  
+const app = express()
+
+app.use((request, response, next) => {  
+  console.log(request.headers)
+  next()
+})
+
+app.use((request, response, next) => {  
+  request.chance = Math.random()
+  next()
+})
+
+app.get('/', (request, response) => {  
+  response.json({
+    chance: request.chance
+  })
+})
+
+app.listen(8080)
