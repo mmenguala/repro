@@ -1,7 +1,8 @@
+#!/bin/env node
 const express = require('express')  
 const app = express()
 
-var server_port = process.env.NODE_PORT || 8081
+var server_port = process.env.NODE_SERVICE_PORT_8080_TCP || 8081
 var server_ip_address = process.env.NODE_PORT_8080_TCP_ADDR || '127.0.0.1'
 
 console.log("El puerto es : " + server_port);
@@ -23,10 +24,12 @@ app.get('/', (request, response) => {
   })
 })
 
-app.listen(8080, server_ip_address, function () {
+app.listen(server_port, server_ip_address, function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
 
+/*
 for (var prop in process.env){
 	console.log(prop + ": " + process.env[prop])
 }
+*/
