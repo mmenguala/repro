@@ -1,4 +1,4 @@
-#!/bin/env node
+#!/usr/bin/env node
 //var sys = require ('sys'),
 var url = require('url'),
 http = require('http'),
@@ -17,6 +17,8 @@ function checkArray(json)
 
 http.createServer(function (req, res)
 {
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.end('Hello World!');
     if(req.method=='POST')
     {
             var body='';
